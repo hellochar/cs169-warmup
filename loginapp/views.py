@@ -4,6 +4,16 @@ from django.utils import simplejson
 from django.views.decorators.http import require_POST
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
+from django.shortcuts import render_to_response
+
+def homepage(request):
+    # import code
+    # code.interact(local=locals())
+    if 'username' in request.GET:
+        return render_to_response('login.html', {'usermodel' : usermodel})
+
+    else:
+        return render_to_response('homepage.html', {'test' : 999})
 
 @csrf_exempt
 @require_POST
@@ -22,8 +32,6 @@ def login(request):
 @require_POST
 def add(request):
     json = simplejson.loads(request.raw_post_data)
-    # import code
-    # code.interact(local=locals())
     user = json['user']
     password = json['password']
     add_result = UsersModel.add(user, password)
