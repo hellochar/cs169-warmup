@@ -16,7 +16,8 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     # url(r'^admin/', include(admin.site.urls)),
 
-    url(r'^$', 'loginapp.views.homepage'),
+    # url(r'^$', 'loginapp.views.homepage'),
+    url(r'^$', 'django.views.generic.simple.direct_to_template', {'template': 'homepage.html'}),
     url(r'^users/login$', 'loginapp.views.login'),
     url(r'^users/add$', 'loginapp.views.add'),
     url(r'^TESTAPI/resetFixture$', 'loginapp.views.resetFixture'),
